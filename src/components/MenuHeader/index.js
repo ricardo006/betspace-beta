@@ -12,8 +12,48 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { FiGrid, FiActivity, FiFileText, FiDollarSign, FiSettings, FiLogOut} from "feather-icons";
 
 const pages = ['Dashboard', 'Usuários', 'Gestão Financeira'];
+const SidebarData = [
+    {
+        title: "Dashboard",
+        icon:  <FiGrid size={24} color="#33ffc2"/>,
+        link: "/home",
+        action: 'handleDashboard'
+    },
+    {
+        title: "Relatórios",
+        icon:   <FiActivity size={24} color="#33ffc2"/>,
+        link:   "/home",
+        action: "handleRelatorios"
+    },
+    {
+        title: "Bilhetes",
+        icon:  <FiFileText size={24} color="#33ffc2"/>,
+        link: "/home",
+        action: "handleBilhetes"
+    },
+    {
+        title: "Caixa",
+        icon:  <FiDollarSign size={24} color="#33ffc2"/>,
+        link: "/home",
+        action: "handleCaixa"
+    },
+    {
+        title: "Ajustes",
+        icon: <FiSettings size={24} color="#33ffc2" />,
+        link: "/home",
+        action: "handleAjustes"
+    },
+    {
+        title: "Sair",
+        icon: <FiLogOut size={24} color="#33ffc2"/>,
+        link: "/home",
+        action: "handleSair"
+    },
+];
+
 const settings = ['Perfil', 'Conta', 'Sair'];
 
 function ResponsiveAppBar() {
@@ -34,6 +74,7 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
 
     return (
         <AppBar spacing="2" position="static" sx={{backgroundColor: '#fff', color: '#003049', fontFamily: 'Poppins'}}>
@@ -87,9 +128,9 @@ function ResponsiveAppBar() {
                             display: { xs: 'block', md: 'none' }
                         }}
                     >
-                        {pages.map((page) => (
-                            <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">{page}</Typography>
+                        {SidebarData.map((page, key) => (
+                            <MenuItem key={key} onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">{page.title}</Typography>
                             </MenuItem>
                         ))}
                     </Menu>
@@ -117,9 +158,9 @@ function ResponsiveAppBar() {
                 </Typography>
 
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                    {pages.map((page) => (
+                    {SidebarData.map((page, key) => (
                         <Button
-                            key={page}
+                            key={key}
                             onClick={handleCloseNavMenu}
                             sx={{ 
                                 my: 2, 
@@ -131,7 +172,7 @@ function ResponsiveAppBar() {
                                 fontWeight: 500 
                             }}
                         >
-                            {page}
+                            {page.title}
                         </Button>
                     ))}
                 </Box>
