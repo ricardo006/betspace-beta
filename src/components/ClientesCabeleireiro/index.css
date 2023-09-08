@@ -1,0 +1,5 @@
+.chip-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 16px;
+}

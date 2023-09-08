@@ -1,0 +1,15 @@
+.chip-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 16px;
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    min-width: 100px;
+    border-radius: 20px;
+}
